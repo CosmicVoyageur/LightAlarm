@@ -36,7 +36,7 @@ void loop()
   // Add entropy to random number generator; we use a lot of it.
   random16_add_entropy( random());
 
-  Fire2012(); // run simulation frame
+  Fire2015(); // run simulation frame
   
   FastLED.show(); // display this frame
   FastLED.delay(1000 / FRAMES_PER_SECOND);
@@ -74,15 +74,15 @@ void loop()
 // COOLING: How much does the air cool as it rises?
 // Less cooling = taller flames.  More cooling = shorter flames.
 // Default 50, suggested range 20-100 
-#define COOLING  30
+#define COOLING  100
 
 // SPARKING: What chance (out of 255) is there that a new spark will be lit?
 // Higher chance = more roaring fire.  Lower chance = more flickery fire.
 // Default 120, suggested range 50-200.
-#define SPARKING 130
+#define SPARKING 200
 
 
-void Fire2012()
+void Fire2015()
 {
 // Array of temperature readings at each simulation cell
   static byte heat[NUM_LEDS];

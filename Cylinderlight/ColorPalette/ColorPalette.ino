@@ -111,15 +111,15 @@ void ChangePalettePeriodically()
   if( lastSecond != secondHand) {
     lastSecond = secondHand;
     if( secondHand ==  0)  { currentPalette = RainbowColors_p;         currentBlending = BLEND; }
-    if( secondHand == 10)  { currentPalette = RainbowStripeColors_p;   currentBlending = NOBLEND;  }
+    if( secondHand == 10)  { currentPalette = RainbowStripeColors_p;   currentBlending = BLEND;  }
     if( secondHand == 15)  { currentPalette = RainbowStripeColors_p;   currentBlending = BLEND; }
     if( secondHand == 20)  { SetupPurpleAndGreenPalette();             currentBlending = BLEND; }
     if( secondHand == 25)  { SetupTotallyRandomPalette();              currentBlending = BLEND; }
-    if( secondHand == 30)  { SetupBlackAndWhiteStripedPalette();       currentBlending = NOBLEND; }
+    if( secondHand == 30)  { SetupBlackAndWhiteStripedPalette();       currentBlending = BLEND; }
     if( secondHand == 35)  { SetupBlackAndWhiteStripedPalette();       currentBlending = BLEND; }
     if( secondHand == 40)  { currentPalette = CloudColors_p;           currentBlending = BLEND; }
     if( secondHand == 45)  { currentPalette = PartyColors_p;           currentBlending = BLEND; }
-    if( secondHand == 50)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = NOBLEND;  }
+    if( secondHand == 50)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = BLEND;  }
     if( secondHand == 55)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = BLEND; }
   }
 }
