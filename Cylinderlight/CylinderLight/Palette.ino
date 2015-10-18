@@ -1,9 +1,13 @@
 extern const TProgmemPalette16 wavePallet_p PROGMEM;
 
 
+void InitPalette(){
+  SetupWaterPalette();
+}
+
 void ChangePalettePeriodically()
 {
-  SetupWaterPalette(); currentBlending = NOBLEND;
+  SetupWaterPalette(); 
   return;
   uint8_t secondHand = (millis() / 1000) % 60;
   static uint8_t lastSecond = 99;
@@ -64,6 +68,8 @@ void SetupPurpleAndGreenPalette()
 
 void SetupWaterPalette()
 {
+  currentBlending = NOBLEND;
+  
   CRGB darkerBlue = 0x0B132B;
   CRGB darkBlue = 0x1C2541;
   CRGB greyBlue = 0x3A506B;

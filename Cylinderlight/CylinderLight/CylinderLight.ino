@@ -54,8 +54,6 @@ const bool    kMatrixSerpentineLayout = true;
 CRGBPalette16 currentPalette;
 TBlendType    currentBlending;
 
-
-
 CRGB leds_plus_safety_pixel[ NUM_LEDS + 1];
 CRGB* leds( leds_plus_safety_pixel + 1);
 
@@ -82,17 +80,18 @@ CRGB* leds( leds_plus_safety_pixel + 1);
 void setup() {
   Serial.begin(115200);
   setupBle();
+  InitPalette();
   delay(3000); // sanity delay
    FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
   FastLED.setBrightness( BRIGHTNESS );
 
-//  inputString.reserve(200); // test
+//ato  inputString.reserve(200); // test
 }
 
 void loop()
 {
   checkBle();
-  ChangePalettePeriodically();
+  //ChangePalettePeriodically();
   
   // Add entropy to random number generator; we use a lot of it.
   random16_add_entropy( random());

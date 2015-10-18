@@ -90,7 +90,13 @@ void handleNewColor(){
     uint8_t blue = packetbuffer[4];
     //uint8_t index = packetbuffer[5]; will do this when I actually send the index of the new color in the palette
     int index = random16();
-    currentPalette[index] = CRGB(red, green, blue);
+    CRGB colour = CRGB(red,green,blue);
+  currentPalette = CRGBPalette16( 
+    colour,  colour,  colour,  colour,
+    colour, colour, colour,  colour,
+    colour,  colour,  colour,  colour,
+    colour, colour, colour,  colour );
+    
     Serial.print ("RGB #");
     if (red < 0x10) Serial.print("0");
     Serial.print(red, HEX);
