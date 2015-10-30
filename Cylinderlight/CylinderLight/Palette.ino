@@ -1,32 +1,11 @@
 extern const TProgmemPalette16 wavePallet_p PROGMEM;
 
 
+
 void InitPalette(){
   SetupWaterPalette();
 }
 
-void ChangePalettePeriodically()
-{
-  SetupWaterPalette(); 
-  return;
-  uint8_t secondHand = (millis() / 1000) % 60;
-  static uint8_t lastSecond = 99;
-  
-  if( lastSecond != secondHand) {
-    lastSecond = secondHand;
-    if( secondHand ==  0)  { currentPalette = RainbowColors_p;         currentBlending = BLEND; }
-    if( secondHand == 10)  { currentPalette = RainbowStripeColors_p;   currentBlending = BLEND;  }
-    if( secondHand == 15)  { currentPalette = RainbowStripeColors_p;   currentBlending = BLEND; }
-    if( secondHand == 20)  { SetupPurpleAndGreenPalette();             currentBlending = BLEND; }
-    if( secondHand == 25)  { SetupTotallyRandomPalette();              currentBlending = BLEND; }
-  //  if( secondHand == 30)  { SetupBlackAndWhiteStripedPalette();       currentBlending = BLEND; }
- //   if( secondHand == 35)  { SetupBlackAndWhiteStripedPalette();       currentBlending = BLEND; }
- //   if( secondHand == 40)  { currentPalette = CloudColors_p;           currentBlending = BLEND; }
- //  if( secondHand == 45)  { currentPalette = PartyColors_p;           currentBlending = BLEND; }
-    if( secondHand == 50)  { currentPalette = wavePallet_p; currentBlending = BLEND;  }
- //   if( secondHand == 55)  { currentPalette = myRedWhiteBluePalette_p; currentBlending = BLEND; }
-  }
-}
 
 // This function fills the palette with totally random colors.
 void SetupTotallyRandomPalette()
@@ -68,7 +47,6 @@ void SetupPurpleAndGreenPalette()
 
 void SetupWaterPalette()
 {
-  currentBlending = NOBLEND;
   
   CRGB darkerBlue = 0x0B132B;
   CRGB darkBlue = 0x1C2541;

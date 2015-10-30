@@ -67,35 +67,50 @@ void checkBle(){
   uint8_t len = readPacket(&ble, BLE_READPACKET_TIMEOUT);
   if (len == 0) return;
 
+  Serial.println("got packet");
+  Serial.println((char)packetbuffer[1]);
+  Serial.println((char)packetbuffer[2]);
   /* Got a packet! */
-  // printHex(packetbuffer, len);
+   printHex(packetbuffer, len);
 
   // Color
   if (packetbuffer[1] == 'C') {
      handleNewColor();
   }
   //mode
-  if(packetbuffer[1]=='M') {
+  Serial.print("mode = "); Serial.println(mode);
+  if(packetbuffer[1]=='B') {
+    int m = packetbuffer[2] - '1';
+    if( m < 4 )mode = m ;
+    else
+    {
+      if (m==4) if(brightness < 240)  FastLED.setBrightness( brightness+=5 );  // brightness up
+      if (m==5) if(brightness > 0)  FastLED.setBrightness( brightness-=5 );// brightness down
+      if (m==6) if(fps > 10) fps-+5; // slower
+      if (m==7) if (fps < 1000) fps+=5; // faster
+    }
     
   }
-  //echo
-  if(packetbuffer[1]=='E'){
-    
-  }
+  
+  Serial.print("mode ");Serial.println(mode);
+  Serial.print("brightness ");Serial.println(brightness);
+  Serial.print("fps ");Serial.println(fps);
 }
 
 void handleNewColor(){
     uint8_t red = packetbuffer[2];
     uint8_t green = packetbuffer[3];
     uint8_t blue = packetbuffer[4];
-    //uint8_t index = packetbuffer[5]; will do this when I actually send the index of the new color in the palette
-    int index = random16();
+
+
     CRGB colour = CRGB(red,green,blue);
-  currentPalette = CRGBPalette16( 
-    colour,  colour,  colour,  colour,
-    colour, colour, colour,  colour,
-    colour,  colour,  colour,  colour,
-    colour, colour, colour,  colour );
+    int index = random8(16);
+    currentPalette[index] = colour;
+    Serial.print("index = "); Serial.println(index);
+    for (int i = 0; i < 16; i++){
+      Serial.print(currentPalette[i]);
+    }
+    Serial.println();
     
     Serial.print ("RGB #");
     if (red < 0x10) Serial.print("0");

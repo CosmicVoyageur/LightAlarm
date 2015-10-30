@@ -39,7 +39,7 @@ extern uint8_t packetbuffer[];
 #define COLOR_ORDER GRB
 #define CHIPSET     NEOPIXEL
 #define NUM_LEDS    256
-#define BRIGHTNESS  250
+
 #define FRAMES_PER_SECOND 20
 
 //    -- Constants ---     //
@@ -52,30 +52,13 @@ const bool    kMatrixSerpentineLayout = true;
 
 
 CRGBPalette16 currentPalette;
-TBlendType    currentBlending;
+TBlendType    currentBlending = BLEND;
 
 CRGB leds_plus_safety_pixel[ NUM_LEDS + 1];
 CRGB* leds( leds_plus_safety_pixel + 1);
 
+int brightness = 150;
 
-//String inputString ;      // a string to hold incoming data
-//boolean stringComplete = false;  // whether the string is complete
-//void serialEvent() {
-//  while (Serial.available()) {
-//    // get the new byte:
-//    char inChar = (char)Serial.read();
-//    // add it to the inputString:
-//    inputString += inChar;
-//    // if the incoming character is a newline, set a flag
-//    // so the main loop can do something about it:
-//    if (inChar == '\n') {
-//      stringComplete = true;
-//    }
-//  }
-//  Serial.print("got - ");Serial.println(inputString);
-//  inputString == "";
-//  stringComplete=false;
-//}
 
 void setup() {
   Serial.begin(115200);
@@ -83,11 +66,13 @@ void setup() {
   InitPalette();
   delay(3000); // sanity delay
    FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
-  FastLED.setBrightness( BRIGHTNESS );
+  FastLED.setBrightness( brightness );
+  
 
 //ato  inputString.reserve(200); // test
 }
 
+int fps = 30;
 void loop()
 {
   checkBle();
@@ -96,14 +81,36 @@ void loop()
   // Add entropy to random number generator; we use a lot of it.
   random16_add_entropy( random());
 
-  Wave2015(); // run simulation frame
+  NextFrame();
+
   
   FastLED.show(); // display this frame
-  FastLED.delay(1000 / FRAMES_PER_SECOND);
+  //FastLED.delay(1000 / FRAMES_PER_SECOND);
+  FastLED.delay(1000 / fps);
 }
 
-
-
+int mode;
+void NextFrame()
+{
+  switch (mode) {
+    case 0: // wave 
+      Wave2015();
+      break;
+    case 1:
+      Fire2015();
+      break;
+    case 2:
+      RotateColours();
+      break;
+    case 3:
+      Columns();
+      break;
+    default: 
+      // if nothing else matches, do the default
+      // default is optional
+    break;
+  }
+}
 
 
 
