@@ -9,7 +9,7 @@ A NeoLantern are neopixels in some form resemling a lantern. They make great fea
 
 ## Images
 
-![Lamp Under Construction](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp-programming.jpg)
+![Lamp Under Construction](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp_programming.jpg)
 
 ![Lamp in Action](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp-inaction.jpg)
 
