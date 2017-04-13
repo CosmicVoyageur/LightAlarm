@@ -11,6 +11,8 @@ A NeoLantern are neopixels in some form resemling a lantern. They make great fea
 
 ![Lamp Under Construction](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp_programming.jpg)
 
+You can see above everything you'll need to get started - a computer, neopixels, arduino, power supply, and speakers(just for fun really)
+
 ![Lamp in Action](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp-inaction.jpg)
 
 ## Ingredients:
@@ -33,6 +35,6 @@ https://github.com/adafruit/Adafruit_NeoPixel
 
 If you want to control it via bluetooth, for now, you can use Adafruit's Android or iOS app to send colours and change modes.
 
-## Example Video
+## Video
 
 [![Light Under Construction](http://img.youtube.com/vi/Mm09RHbRcS0/0.jpg)](https://youtu.be/Mm09RHbRcS0)
