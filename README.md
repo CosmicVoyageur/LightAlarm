@@ -1,4 +1,17 @@
-# LightAlarm
+# NeoLantern
+
+A NeoLantern are neopixels in some form resemling a lantern. They make great feature lights for a room or party, and can even be used on stage during performances.
+
+## Features
+
+* Multiple dynamic modes for different moods
+* Bluetooth controller via your Android or iOS device
+
+## Images
+
+![Lamp Under Construction](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp-programming.jpg)
+
+![Lamp in Action](https://github.com/xtellurian/LightAlarm/blob/master/Images/dynamiclamp-inaction.jpg)
 
 ## Ingredients:
 
